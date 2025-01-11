@@ -1,12 +1,23 @@
-import React from 'react'
-// This component will handle listing all of the titles of our posts, and make it so that
-//  when you click them  you are taken to a full page view of that post and it's content
-const PostList = () => {
+import React from "react";
+import { Link } from "react-router-dom";
+
+const PostList = ({ posts }) => {
+  if (!posts || posts.length === 0) {
+    return <p>No posts to display.</p>;
+  }
+
   return (
     <div>
-      <p>PostList Filler Text</p>
+      <h2>Posts</h2>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>
+            <Link to={`/posts/${post.id}`}>{post.title}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default PostList
+export default PostList;
