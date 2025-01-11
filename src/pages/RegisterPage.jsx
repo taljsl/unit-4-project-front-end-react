@@ -13,8 +13,11 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await registerUser({ username, email, password });
-      setAuth({isLoggedIn: true, username})
+      const res = await registerUser({ username, password });
+      const user = res.data;
+      setAuth({isLoggedIn: true, user: res.data})
+      console.log(user);
+      
       navigate('/');
     } catch (error) {
       console.error('Registration failed', error);
@@ -24,7 +27,7 @@ const RegisterPage = () => {
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      {/* <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} /> */}
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       <button type="submit">Register</button>
     </form>
