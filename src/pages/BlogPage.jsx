@@ -3,13 +3,13 @@ import { fetchPosts, fetchPostById } from "../services/api";
 import PostList from "../components/PostList";
 import PostDetails from "../components/PostDetails";
 import SearchBar from "../components/SearchBar";
-import { useNavigate } from "react-router-dom";
+
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
-  const navigate = useNavigate();
+  
 
   useEffect(() => {
     const loadPosts = async () => {
