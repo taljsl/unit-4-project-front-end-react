@@ -1,18 +1,21 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { registerUser } from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../App';
 
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { setAuth } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await registerUser({ username, email, password });
-      navigate('/login');
+      setAuth({isLoggedIn: true, username})
+      navigate('/');
     } catch (error) {
       console.error('Registration failed', error);
     }

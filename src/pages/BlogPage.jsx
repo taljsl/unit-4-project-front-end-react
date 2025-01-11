@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
-import { fetchPosts, fetchPostById } from '../services/api';
-import PostList from '../components/PostList';
-import PostDetails from '../components/PostDetails';
-import SearchBar from '../components/SearchBar';
+import { useState, useEffect } from "react";
+import { fetchPosts, fetchPostById } from "../services/api";
+import PostList from "../components/PostList";
+import PostDetails from "../components/PostDetails";
+import SearchBar from "../components/SearchBar";
+
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
+  
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -19,7 +21,11 @@ const BlogPage = () => {
   }, []);
 
   const handleSearch = (query) => {
-    setFilteredPosts(posts.filter(post => post.title.toLowerCase().includes(query.toLowerCase())));
+    setFilteredPosts(
+      posts.filter((post) =>
+        post.title.toLowerCase().includes(query.toLowerCase())
+      )
+    );
   };
 
   const handlePostSelect = async (id) => {
