@@ -7,12 +7,16 @@ const Navbar = () => {
   const handleLogout = () => {
     setAuth({ isLoggedIn: false, username: "" });
   };
+
+  console.log(auth);
+  
+
   return (
     <nav>
       <ul>
         {auth.isLoggedIn ? (
           <>
-            <li>Welcome, {auth.username}</li>
+            <li>Welcome, {auth.user.user.username}</li>
             <li>
               <Link to="/">Home</Link>
             </li>
