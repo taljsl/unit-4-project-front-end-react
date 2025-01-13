@@ -54,21 +54,21 @@ const CraftPost = () => {
             type="text" 
             name="TitleInput" 
             id="TitleInput" 
-            value={title}
+            value={post.title}
             o
             onChange={handlePostChange} />
         </div>
           {/* <input type="button" name='Insert Media' value="Insert Media" onClick= /> */}
         
          {/* Body Input */}
-          <div>Body
+          <div>
             <label htmlFor="BodyInput">Body</label>
             <textarea 
             
               name="body" 
               id="BodyInput"
               rows="5"
-              value={body}
+              value={post.body}
               onChange={handlePostChange}
             ></textarea>
           </div>
