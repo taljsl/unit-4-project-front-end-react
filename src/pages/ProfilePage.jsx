@@ -25,50 +25,44 @@ const ProfilePage = ({ auth }) => {
       try {
         const res = await axios.get(`/profiles/${userID}`);
         setProfileData(res.data);
-        s
-        setProfile(JSONdata)
+        console.log(profileData);
+        
       
       } catch (error) {
-        console.error('Error fetching User Profile', error);
+        setError('Profile not found', error);
       }
     }
-  }, [userId])
+    fetchUserProfile();
+  }, [userId]);
+
+  if (error)
+    return <div>{error}</div>
 
   return (
     <div> 
-      <div className='profileHeader'>
-         <h1>{profileData.user.username} Profile</h1>
-         <img src={profileData.profile_picture} alt={profileData.user.username} />
+      {profileData ? (
+        <div>
+          <div className='profileCard'>
+            <h1>{profileData.profile.user.username}'s Profile</h1>
+            <img src={profileData.profile.profile_picture} alt={profileData.profile.user.username} />
+            <p>{profileData.profile.bio}</p>
+          </div>
+          <div>
+            <h2>Blogs</h2>
+            <ul>
+              {profileData.blogs.map((blog) => (
+                <li key={blog.id}>{blog.title}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        
+      ):(
+        <p> Loading...</p>  
+      )}
       </div>
-      <div className='button container'>
-          <button className='profileEidt' type='button'>Edit Profile</button>
-          <button className='CreatePost' type='button'> Post a Blog</button>
-      </div>
-      <div className='profileBlogsContainer'>
-        <h2>Your Articles</h2>
-        {/* ternary incase no blog posts */}
-        {BlogPosts && BlogPosts.length ? (
-            // Map throug fi there is content
-            BlogPosts.map((blog, idx) => {
-              return (
-                <div className='blogContainer' key={idx}>
-                  <h5>{blog.title}</h5>
-  
-                </div>
-                );
-              })
-              ) : (
-                <p>
-                  Looks like you haven't upload any Blogs
-                </p>
-              )}
-
-
-      </div>
-      
-    </div>
-  )
-}
+  );
+};
 
 export default ProfilePage
 
