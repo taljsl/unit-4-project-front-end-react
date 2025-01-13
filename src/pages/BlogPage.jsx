@@ -3,13 +3,14 @@ import { fetchPosts, fetchPostById } from "../services/api";
 import PostList from "../components/PostList";
 import PostDetails from "../components/PostDetails";
 import SearchBar from "../components/SearchBar";
-
+import CraftPost from "./CraftPost";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
-  
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -33,9 +34,13 @@ const BlogPage = () => {
     setSelectedPost(response.data);
   };
 
+  const goToCraftPost = () => {
+    navigate('/CraftPost');
+  }
   return (
     <div>
       <SearchBar onSearch={handleSearch} />
+      <button onClick={goToCraftPost}>Craft a Post</button>
       {selectedPost ? (
         <PostDetails post={selectedPost} />
       ) : (

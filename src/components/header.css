@@ -1,0 +1,17 @@
+.header {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.header-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0
+}
+
+.header-divider {
+    width: 80%;
+    margin: 10px auto;
+    border: none;
+    border-top: 1px solid black;
+}
