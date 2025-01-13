@@ -17,4 +17,7 @@ export const loginUser = (data) => api.post('/auth/login/', data)
 export const fetchPosts = () => api.get('/blogposts/');
 export const fetchPostById = (id) => api.get(`/blogposts/${id}/`);
 
+// // im assuming this is correct??
+// export const fetchProfile = (id) => api.get(`/profiles/${id}/`)
+
 export default api;
