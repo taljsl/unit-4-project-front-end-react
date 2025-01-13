@@ -16,7 +16,6 @@ const LoginPage = () => {
       const res = await loginUser({ username, password });
       if (res && res.data)
         console.log("login successful:", res.data);
-        console.log(res.data);
    
         setAuth({isLoggedIn: true, user: res.data});
         console.log(user);

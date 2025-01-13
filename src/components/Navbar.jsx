@@ -5,7 +5,7 @@ const Navbar = () => {
   const { auth, setAuth } = useContext(AuthContext);
 
   const handleLogout = () => {
-    setAuth({ isLoggedIn: false, username: "" });
+    setAuth({ isLoggedIn: false, user: {} });
   };
 
   console.log(auth);

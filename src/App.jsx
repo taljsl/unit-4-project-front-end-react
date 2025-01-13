@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import BlogPage from "./pages/BlogPage";
+import ProfilePage from "./pages/ProfilePage";
 
 // AuthContext code suggestion provided by chatgpt along with createContext
 export const AuthContext = createContext();
@@ -20,6 +21,7 @@ const App = () => {
           {auth.isLoggedIn ? (
             <>
               <Route path="/" element={<BlogPage />} />
+              <Route path="profiles/:userId" element={<ProfilePage />} />
             </>
           ) : (
             <>
