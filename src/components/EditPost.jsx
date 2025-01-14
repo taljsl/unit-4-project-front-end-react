@@ -1,6 +1,6 @@
 import React from 'react'
 // This component  will be the modal for when a user clicks an edit post button on the ViewPost page 
-const EditPost = () => {
+const PostDrafts = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const EditPost = () => {
   )
 }
 
-export default EditPost
+export default PostDrafts
