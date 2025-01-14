@@ -20,7 +20,7 @@ const RegisterPage = () => {
       
       navigate('/');
     } catch (error) {
-      console.error('Registration failed', error);
+      console.error('Registration failed', error.response?.data || error.message);;
     }
   };
 
