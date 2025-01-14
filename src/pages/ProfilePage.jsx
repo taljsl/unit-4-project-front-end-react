@@ -3,6 +3,7 @@ import { AuthContext } from '../App'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { fetchProfile } from '../services/api';
+import { Link } from 'react-router-dom';
 
 
 // This page will make the screen display profile informatiion (username etc.)
@@ -54,7 +55,7 @@ const ProfilePage = () => {
 
 
   // validate ownership
-  const isOwner = auth?.user?.id === parseInt(userId, 10);
+  const isOwner = auth.user.user.id === parseInt(userId, 10)
 
   
 
@@ -67,19 +68,31 @@ const ProfilePage = () => {
           <div className='profileCard'>
             <h1>{profileData.profile.user.username}'s Profile</h1>
             <img 
-            src={profileData.profile.profile_picture } 
+            src={
+              profileData.profile.profile_picture || 
+              '/media/profile_picture/profile_picture_placeholder.jpg'
+            }
             alt={profileData.profile.user.username} 
             />
             <p>{profileData.profile.bio}</p>
-            {isOwner && <button type="button">Edit Profile</button>}
+            {isOwner && <button type="button">Edit Profile</button>} {/* redirect to account settings to update profile*/}
         
           </div>
           <div>
             <h2>Blogs</h2>
-            {isOwner && <button type='button'>Add a Blog</button>}
+            {isOwner && <button type='button'>Add a Blog</button>} {/* redirect to blog creation*/}
             <ul>
               {profileData.blogs.map((blog) => (
-                <li key={blog.id}>{blog.title}</li>
+                <li key={blog.id}>
+                   <Link to={`/posts/${blog.id}`}>{blog.title}</Link>
+                    <ul>
+                      <li>
+                        <em>Published:</em> {' '}
+                        {new Date (blog.created_at).toISOString().slice(0, 10)}
+                        </li>
+                    </ul>
+                </li>
+
               ))}
             </ul>
           </div>

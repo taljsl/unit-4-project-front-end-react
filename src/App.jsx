@@ -29,7 +29,11 @@ const [auth, setAuth] = useState({ isLoggedIn: false, user: null });
             <>
               <Route path="/" element={<BlogPage />} />
               <Route path="/posts/:id" element={<PostDetails />} />
+
+              <Route path="/profiles/:userId" element={<ProfilePage />} />
+
                 <Route path="/CreatePost" element={<CreatePost />} />
+
             </>
           ) : (
             <>
