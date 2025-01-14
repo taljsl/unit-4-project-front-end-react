@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import CreatePost from "./pages/CreatePost";
 import ProfilePage from "./pages/ProfilePage";
 import PostDetails from "./components/PostDetails";
+import './App.css'
 // AuthContext code suggestion provided by chatgpt along with createContext
 export const AuthContext = createContext();
 
@@ -20,9 +21,10 @@ const [auth, setAuth] = useState({ isLoggedIn: false, user: null });
 
   return (
     // By Wrapping the component tree in the .provider we make it so that the auth fucntion is avilable  to each component inside
-
+    
     <AuthContext.Provider value={{ auth, setAuth }}>
       <Router>
+        <Header />
         <Navbar />
         <Routes>
           {auth.isLoggedIn ? (
@@ -34,7 +36,7 @@ const [auth, setAuth] = useState({ isLoggedIn: false, user: null });
           ) : (
             <>
               <Route path="/login/" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/register/" element={<RegisterPage />} />
               {/* the below line makes it so any routes that don't match a component route will route to login page */}
               <Route path="*" element={<LoginPage />} />
             </>

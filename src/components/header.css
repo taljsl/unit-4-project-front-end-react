@@ -1,16 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
 
+body {
+    margin: 0; /* Remove default browser margins */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    background-color: #f2a9a9; /* Optional background color */
+}
+
 .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    margin: 20px 0;
+    height: 100vh;
+    margin: 0;
 }
 
 .header-title {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: bold;
-    margin: 0
+    margin: 0;
 }
 
 .header-divider {

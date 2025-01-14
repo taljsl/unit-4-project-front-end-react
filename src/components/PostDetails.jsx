@@ -34,10 +34,14 @@ const PostDetails = () => {
   }, [post]);
 
   console.log(post);
+
+ 
   if (!post) {
     return <p>Loading post details...</p>;
   }
-
+  const goToEditPost = () => {
+    navigate("/EditPost");
+  };
   return (
     <div>
       <h2>{post.title}</h2>
@@ -45,6 +49,7 @@ const PostDetails = () => {
       <div>
         <p>{post.body_text}</p>
       </div>
+      <button onClick={goToEditPost} >Edit Post</button>
     </div>
   );
 };
