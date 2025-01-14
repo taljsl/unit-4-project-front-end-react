@@ -8,14 +8,25 @@ const api = axios.create({
   },
 });
 
-export const CreatePost = async (data) => api.post("/CreatePost/", data);
-export const registerUser = (data) => api.post("/auth/register/", data);
-export const loginUser = (data) =>
-  api.post("/auth/login/", data).then((response) => {
-    localStorage.setItem("authToken", response.data.token);
-    return response;
-  });
-export const fetchPosts = () => api.get("/blogposts/");
-export const fetchPostById = (id) => api.get(`/blogposts/${id}/`);
+
+
+
+
+export const registerUser = (data) => api.post('/auth/register/', data);
+export const loginUser = (data) => api.post('/auth/login/', data)
+    .then(response => {
+        localStorage.setItem('authToken', response.data.token);
+        return response
+    })
+export const fetchProfile = (userId) => api.get(`users/profiles/${userId}`)
+// export const loginUser = async (credentials) => {
+//   const res = await axios.post("/auth/login/", credentials);
+//   return res
+// }
+export const fetchPosts = () => api.get('/blogposts');
+export const fetchPostById = (id) => api.get(`/blogposts/${id}`);
+
+export const fetchUserById = (userId) => api.get(`/users/${userId}`);
+
 
 export default api;

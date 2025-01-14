@@ -8,25 +8,39 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { setAuth } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
     //   console.log(username, password);
       const res = await loginUser({ username, password });
-      if (res && res.data)
-        console.log("login successful:", res.data);
-        console.log(res.data);
+
+      console.log("login response:", res.data);
+      
+      if (!res.data || !res.data.user)
+        throw new Error('invalid response structure')
    
-        setAuth({isLoggedIn: true, user: res.data});
-        console.log(user);
-                
+        setAuth({
+          isLoggedIn: true, 
+          user: {
+            user: res.data.user,
+          },
+        });
+
+        console.log("auth state updated:", res.data.user);
+       
+
         navigate("/");
     
     } catch (error) {
       console.error("Login failed", error);
     }
   };
+
+
+  
 
   return (
     <form onSubmit={handleSubmit}>
