@@ -21,13 +21,33 @@ const EditPost = () => {
         const handleSubmit = (e) => {
             e.preventDefault();
             console.log("Post Updated:", post);
-            navigate("/blogposts")
+            navigate("/blogposts");
             
             const handlePostChange = (e) => {
                 setPost({ ...post, [e.target.id]: e.target.value });
               };
         }
-
+        const handlePostDelete = async () => {
+            const confirmDelete = window.confirm(
+                "Are you sure you want to delete this post?"
+            );
+            if (confirmDelete) {
+                try {
+                    const response = await fetch(`/blogposts/${id}/`, {
+                        method: "DELETE",
+                    });
+                    if (response.ok) {
+                        console.log("Post Deleted");
+                        navigate("/blogposts"); // Redirect to the blogposts page
+                    } else {
+                        console.error("Failed to delete post.");
+                    }
+                } catch (error) {
+                    console.error("Error deleting post:", error);
+                }
+            }
+        };
+        }
         return (
             <form onSubmit={handleSubmit}>
                 <label>Title</label>
@@ -42,6 +62,11 @@ const EditPost = () => {
                     onChange={handlePostChange}
                 ></textarea>
                 <button type="submit">Publish</button>
+                <button
+                onClick={handlePostDelete}
+                style={{ backgroundColor: "red", color: "white", marginTop: "10px" }}>
+                Delete Post
+            </button>
 
             </form>
         );
