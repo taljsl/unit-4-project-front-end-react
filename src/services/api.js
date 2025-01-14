@@ -6,6 +6,9 @@ const api = axios.create({
   headers: {
     Authorization: `Bearer ${localStorage.getItem("authToken")}`,
   },
+//   withXSRFToken: true,
+//     xsrfCookieName: `csrftoken`,
+//     xsrfHeaderName: `X-CSRFToken`,
 });
 
 
