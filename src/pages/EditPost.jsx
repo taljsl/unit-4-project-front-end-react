@@ -47,7 +47,7 @@ const EditPost = () => {
                 }
             }
         };
-        }
+        
         return (
             <form onSubmit={handleSubmit}>
                 <label>Title</label>
@@ -70,6 +70,6 @@ const EditPost = () => {
 
             </form>
         );
-}
+};
 
 export default EditPost;
