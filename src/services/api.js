@@ -50,4 +50,8 @@ export const fetchUserById = (userId) => api.get(`/users/${userId}`);
 export const handleCreatePost = (data) =>api.post("/blogposts/", data);
 
 export const deletePost = (id) => api.delete(`/blogposts/${id}/`);
+
+export const updatePost = (id, data) => api.put(`/blogposts/${id}/`, data);
+
+
 export default api;

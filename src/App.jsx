@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import CreatePost from "./pages/CreatePost";
 import ProfilePage from "./pages/ProfilePage";
 import PostDetails from "./components/PostDetails";
+import EditPost from "./pages/EditPost";
 // AuthContext code suggestion provided by chatgpt along with createContext
 export const AuthContext = createContext();
 
@@ -33,6 +34,7 @@ const [auth, setAuth] = useState({ isLoggedIn: false, user: null });
               <Route path="/profiles/:userId" element={<ProfilePage />} />
 
                 <Route path="/CreatePost" element={<CreatePost />} />
+                <Route path="/posts/edit/:id" element={<EditPost />} />
 
             </>
           ) : (

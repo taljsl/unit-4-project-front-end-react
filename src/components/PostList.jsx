@@ -14,7 +14,7 @@ const PostList = ({ posts }) => {
             <Link to={`/posts/${post.id}`}>{post.title}</Link>
           </li>
         ))}
-        <button onClick={() => onEdit(post.id)}></button>
+        
       </ul>
     </div>
   );
