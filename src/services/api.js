@@ -6,6 +6,9 @@ const api = axios.create({
   headers: {
     Authorization: `Bearer ${localStorage.getItem("authToken")}`,
   },
+//   withXSRFToken: true,
+//     xsrfCookieName: `csrftoken`,
+//     xsrfHeaderName: `X-CSRFToken`,
 });
 
 
@@ -27,6 +30,6 @@ export const fetchPosts = () => api.get('/blogposts');
 export const fetchPostById = (id) => api.get(`/blogposts/${id}`);
 
 export const fetchUserById = (userId) => api.get(`/users/${userId}`);
-
+export const handleCreatePost = (data) => api.post('/blogposts/', data);
 
 export default api;

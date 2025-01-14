@@ -1,26 +1,28 @@
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-
+import { handleCreatePost } from "../services/api";
 // This should contain the content of a modal that will open when users click a "Create New Post button"
 
 const CreatePost = () => {
   const [post, setPost] = useState({
     title: "",
-    body: "",
+    body_text: "",
   });
-  // const [title, setTitle] = useState('');
-  // const [body, setBody] = useState('');
+  // const [title, setTitle] = useState("");
+  // const [body_text, setBody_text] = useState("");
   const navigate = useNavigate();
 
   const handlePostChange = (e) => {
     setPost({ ...post, [e.target.id]: e.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // console.log('Post Published:', { post.title, post.body});
-    // setBody('');
-    // setTitle('');
+    // console.log('Post Published:', { title, body_text });
+    
+    const res = await handleCreatePost(post); 
+    console.log(res);
+    
     navigate("/");
   };
 
@@ -43,10 +45,10 @@ const CreatePost = () => {
       <form onSubmit={handleSubmit}>
         {/* Title Input */}
         <div>
-          <label htmlFor="TitleInput">Title</label>
+          <label htmlFor="title">Title</label>
           <input
             type="text"
-            name="TitleInput"
+            name="title"
             id="title"
             value={post.title}
             onChange={handlePostChange}
@@ -56,12 +58,12 @@ const CreatePost = () => {
 
         {/* Body Input */}
         <div>
-          <label htmlFor="BodyInput">Body</label>
+          <label htmlFor="body_text">Body</label>
           <textarea
-            name="body"
-            id="body"
+            name="body_text"
+            id="body_text"
             rows="5"
-            value={post.body}
+            value={post.body_text}
             onChange={handlePostChange}
           ></textarea>
         </div>
