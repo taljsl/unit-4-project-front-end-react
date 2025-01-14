@@ -1,12 +1,13 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
-  
+
   headers: {
-    'Authorization': `Bearer ${localStorage.getItem('authToken')}`
-  }
+    Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+  },
 });
+
 
 
 
@@ -26,5 +27,6 @@ export const fetchPosts = () => api.get('/blogposts');
 export const fetchPostById = (id) => api.get(`/blogposts/${id}`);
 
 export const fetchUserById = (userId) => api.get(`/users/${userId}`);
+
 
 export default api;

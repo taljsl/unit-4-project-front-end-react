@@ -5,8 +5,9 @@ import Navbar from "./components/Navbar";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import BlogPage from "./pages/BlogPage";
+import Header from "./components/Header";
+import CreatePost from "./pages/CreatePost";
 import ProfilePage from "./pages/ProfilePage";
-
 import PostDetails from "./components/PostDetails";
 // AuthContext code suggestion provided by chatgpt along with createContext
 export const AuthContext = createContext();
@@ -19,6 +20,7 @@ const [auth, setAuth] = useState({ isLoggedIn: false, user: null });
 
   return (
     // By Wrapping the component tree in the .provider we make it so that the auth fucntion is avilable  to each component inside
+
     <AuthContext.Provider value={{ auth, setAuth }}>
       <Router>
         <Navbar />
@@ -27,6 +29,7 @@ const [auth, setAuth] = useState({ isLoggedIn: false, user: null });
             <>
               <Route path="/" element={<BlogPage />} />
               <Route path="/posts/:id" element={<PostDetails />} />
+                <Route path="/CreatePost" element={<CreatePost />} />
             </>
           ) : (
             <>
@@ -39,6 +42,7 @@ const [auth, setAuth] = useState({ isLoggedIn: false, user: null });
         </Routes>
       </Router>
     </AuthContext.Provider>
+
   );
 };
 
