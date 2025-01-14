@@ -25,7 +25,6 @@ export const fetchProfile = (userId) => api.get(`users/profiles/${userId}`)
 export const fetchPosts = () => api.get('/blogposts');
 export const fetchPostById = (id) => api.get(`/blogposts/${id}`);
 
-// // im assuming this is correct??
-// export const fetchProfile = (id) => api.get(`/profiles/${id}/`)
+export const fetchUserById = (userId) => api.get(`/users/${userId}`);
 
 export default api;

@@ -16,6 +16,7 @@ const LoginPage = () => {
     try {
     //   console.log(username, password);
       const res = await loginUser({ username, password });
+
       console.log("login response:", res.data);
       
       if (!res.data || !res.data.user)
@@ -30,6 +31,7 @@ const LoginPage = () => {
 
         console.log("auth state updated:", res.data.user);
        
+
         navigate("/");
     
     } catch (error) {
