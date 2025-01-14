@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import BlogPage from "./pages/BlogPage";
 import Header from "./components/Header";
-import CraftPost from "./pages/CraftPost";
+import CreatePost from "./pages/CreatePost";
 
 // AuthContext code suggestion provided by chatgpt along with createContext
 export const AuthContext = createContext();
@@ -27,7 +27,7 @@ const App = () => {
               </>
             ) : (
               <>
-                <Route path="/CraftPost" element={<CraftPost />} />
+                <Route path="/CreatePost" element={<CreatePost />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 {/* the below line makes it so any routes that don't match a component route will route to login page */}

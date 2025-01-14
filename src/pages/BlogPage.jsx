@@ -3,7 +3,7 @@ import { fetchPosts, fetchPostById } from "../services/api";
 import PostList from "../components/PostList";
 import PostDetails from "../components/PostDetails";
 import SearchBar from "../components/SearchBar";
-import CraftPost from "./CraftPost";
+import CreatePost from "./CreatePost";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const BlogPage = () => {
@@ -34,13 +34,13 @@ const BlogPage = () => {
     setSelectedPost(response.data);
   };
 
-  const goToCraftPost = () => {
-    navigate('/CraftPost');
-  }
+  const goToCreatePost = () => {
+    navigate("/CreatePost");
+  };
   return (
     <div>
       <SearchBar onSearch={handleSearch} />
-      <button onClick={goToCraftPost}>Craft a Post</button>
+      <button onClick={goToCreatePost}>Craft a Post</button>
       {selectedPost ? (
         <PostDetails post={selectedPost} />
       ) : (
