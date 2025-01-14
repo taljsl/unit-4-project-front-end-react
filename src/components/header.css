@@ -8,13 +8,13 @@
 
 .header-title {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
     margin: 0
 }
 
 .header-divider {
-    width: 80%;
+    width: 105%;
     margin: 10px auto;
     border: none;
     border-top: 1px solid black;
