@@ -12,7 +12,11 @@ import PostDetails from "./components/PostDetails";
 export const AuthContext = createContext();
 
 const App = () => {
-  const [auth, setAuth] = useState({ isLoggedIn: false, username: "" });
+
+const [auth, setAuth] = useState({ isLoggedIn: false, user: null });
+
+
+
   return (
     // By Wrapping the component tree in the .provider we make it so that the auth fucntion is avilable  to each component inside
     <AuthContext.Provider value={{ auth, setAuth }}>
@@ -26,7 +30,7 @@ const App = () => {
             </>
           ) : (
             <>
-              <Route path="/login" element={<LoginPage />} />
+              <Route path="/login/" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               {/* the below line makes it so any routes that don't match a component route will route to login page */}
               <Route path="*" element={<LoginPage />} />
