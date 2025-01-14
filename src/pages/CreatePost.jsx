@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { handleCreatePost } from "../services/api";
 // This should contain the content of a modal that will open when users click a "Create New Post button"
-
+import { AuthContext } from "../App";
+import { useContext } from "react";
+// console.log(AuthContext);
 const CreatePost = () => {
+  const { auth } = useContext(AuthContext)
+  // console.log(auth);
   const [post, setPost] = useState({
     title: "",
     body_text: "",
+    author: null,
   });
   // const [title, setTitle] = useState("");
   // const [body_text, setBody_text] = useState("");
@@ -18,10 +23,13 @@ const CreatePost = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // console.log('Post Published:', { title, body_text });
+    post.author = auth.user.user.id;
+try{
+  const res = await handleCreatePost(post);
+  console.log(res);
+}catch(error){
+  console.error('Post failed', error.response?.data || error.message);}
     
-    const res = await handleCreatePost(post); 
-    console.log(res);
     
     navigate("/");
   };
