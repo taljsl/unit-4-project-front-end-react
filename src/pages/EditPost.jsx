@@ -111,6 +111,6 @@ const EditPost = () => {
 //     </form>
 //   );
 // // >>>>>>> main
-// };
+};
 
 export default EditPost;
