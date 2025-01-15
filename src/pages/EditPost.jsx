@@ -30,6 +30,7 @@ const EditPost = () => {
         const handlePostDelete = async () => {
             const confirmDelete = window.confirm(
                 "Are you sure you want to delete this post?"
+                
             );
             if (confirmDelete) {
                 try {

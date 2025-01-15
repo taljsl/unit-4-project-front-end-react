@@ -6,7 +6,7 @@ const PostList = ({ posts }) => {
   }
 
   return (
-    <div>
+    <div className='postList'>
       {/* <h2>Your Posts Feed:</h2> */}
       <ul>
         {posts.map((post) => (

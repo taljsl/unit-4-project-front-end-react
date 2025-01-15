@@ -5,6 +5,8 @@ import { handleCreatePost } from "../services/api";
 import { AuthContext } from "../App";
 import { useContext } from "react";
 // console.log(AuthContext);
+
+
 const CreatePost = () => {
   const { auth } = useContext(AuthContext)
   // console.log(auth);
