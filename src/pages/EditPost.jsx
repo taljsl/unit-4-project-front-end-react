@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
+import { fetchPostById } from "../services/api";
+import api from "../services/api";
+import { updatePost } from "../services/api";
 const EditPost = () => {
-    const { id } = useParams(); 
-    const navigate = useNavigate();
-    const [post,setPost] = useState({
-         title: "",
-          body: ""
-        });
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [post, setPost] = useState({
+    title: "",
+    body_text: "",
+  });
 
-        useEffect(() => {
-            const fetchPost = async () => {
-                const response = await fetch(`/blogposts/${id}/`);
-                const data = await response.json();
-                setPost(data);
-            };
-            fetchPost();
-        }, [id]);
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await fetchPostById(id);
+        setPost(response.data);
+      } catch (error) {
+        console.error("Error Fetching Post", error);
+      }
+    };
+    fetchPost();
+  }, [id]);
 
+// <<<<<<< daves_branch
         const handleSubmit = (e) => {
             e.preventDefault();
             console.log("Post Updated:", post);
@@ -70,6 +76,40 @@ const EditPost = () => {
 
             </form>
         );
-};
+// // =======
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     try {
+//       await updatePost(id, post);
+//       navigate(`/posts/${id}`);
+//     } catch (error) {
+//       console.error("Error updating post:", error);
+//     }
+//   };
+
+//   const handlePostChange = (e) => {
+//     setPost({ ...post, [e.target.id]: e.target.value });
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <label>Title</label>
+//       <input
+//         type="text"
+//         id="title"
+//         value={post.title}
+//         onChange={handlePostChange}
+//       />
+//       <label>Body</label>
+//       <textarea
+//         id="body_text"
+//         value={post.body_text}
+//         onChange={handlePostChange}
+//       ></textarea>
+//       <button type="submit">Publish</button>
+//     </form>
+//   );
+// // >>>>>>> main
+// };
 
 export default EditPost;
