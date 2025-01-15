@@ -19,7 +19,7 @@ body {
     /* text-align: center; */
     height: 10vh;
     /* margin: ; */
-    background-color: blue;
+    /* background-color: blue; */
     /* margin-top: 0px; */
     position: sticky;
     top: 10px;
@@ -41,7 +41,7 @@ body {
 }
 
 .NavBar {
-  background-color: aqua;
+  background-color: rgb(255, 255, 255);
   display: flex;
   justify-content: flex-end;
   gap: 20px;
@@ -53,7 +53,7 @@ body {
   }
 
 .LoggedInNavBar {
-  background-color: aqua;
+  background-color: rgb(204, 204, 204);
   display: flex;
   justify-content: flex-end;
   align-items: first baseline;
@@ -123,9 +123,13 @@ body {
   justify-content: center;
   margin-top: 30px;
 }
+
+.postList {
+  background-color: rgb(204, 204, 204);
+}
 html, body {
   font-family: 'Open Sans', Arial, sans-serif;
-  background-color: rgb(231, 159, 159);
+  background-color: rgb(106, 133, 104);
 }
 
 h2 {
