@@ -13,21 +13,19 @@ const Navbar = () => {
   
 
   return (
-    <nav>
+    <nav className='NavBarContainer'>
       <ul>
         {auth.isLoggedIn ? (
-          <>
-            <li>Welcome, {auth.user?.username}</li>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li> <Link to={`/profiles/${auth.user.user.id}/`}> My Profile </Link> </li>
-            <li>
-              <button onClick={handleLogout}>Logout </button>
-            </li>
-          </>
+          <div className="LoggedInNavBar">
+            {/* <p>Welcome, {auth.user?.username}</p> */}
+            <Link to="/">Home</Link>
+            <Link to={`/profiles/${auth.user.user.id}/`}> My Profile </Link> 
+            <Link to="/" onClick={handleLogout}>Logout</Link>
+            {/* <button onClick={handleLogout}>Logout </button> */}
+          </div>
         ) : (
           <div className="NavBar">
+              <Link to="/">Home</Link>
               <Link to="/login">Login</Link>
               <Link to="/register">Register</Link>
           </div>

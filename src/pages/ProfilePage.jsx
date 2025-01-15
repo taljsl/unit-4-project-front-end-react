@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { fetchProfile } from '../services/api';
 import { Link } from 'react-router-dom';
-
+import { Navigate, useNavigate } from "react-router-dom";
 
 // This page will make the screen display profile informatiion (username etc.)
 // furthermore it will contain a list of just the user's posts
@@ -16,6 +16,7 @@ const ProfilePage = () => {
   const { userId } = useParams();
   const [profileData, setProfileData]= useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   // varible to store profile Id
   // const userID = auth.user.user.id
@@ -57,7 +58,9 @@ const ProfilePage = () => {
   // validate ownership
   const isOwner = auth.user.user.id === parseInt(userId, 10)
 
-  
+  const goToCreatePost = () => {
+    navigate("/CreatePost");
+  };
 
 
   return (
@@ -79,8 +82,8 @@ const ProfilePage = () => {
         
           </div>
           <div>
-            <h2>Blogs</h2>
-            {isOwner && <button type='button'>Add a Blog</button>} {/* redirect to blog creation*/}
+            <h2>Your Posts</h2>
+            {isOwner && <button type='button' onClick={goToCreatePost}>Create Post</button>} {/* redirect to blog creation*/}
             <ul>
               {profileData.blogs.map((blog) => (
                 <li key={blog.id}>

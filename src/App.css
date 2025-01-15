@@ -52,6 +52,17 @@ body {
   /* z-index: 999; */
   }
 
+.LoggedInNavBar {
+  background-color: aqua;
+  display: flex;
+  justify-content: flex-end;
+  align-items: first baseline;
+  height: 30px;
+  margin: 0;
+  gap: 20px;
+  /* padding: 2px 0px; */
+}
+
 .Register {
   display: flex;
   flex-direction: column;

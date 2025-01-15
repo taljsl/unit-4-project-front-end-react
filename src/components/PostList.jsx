@@ -7,7 +7,7 @@ const PostList = ({ posts }) => {
 
   return (
     <div>
-      <h2>Posts</h2>
+      {/* <h2>Your Posts Feed:</h2> */}
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
