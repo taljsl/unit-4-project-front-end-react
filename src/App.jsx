@@ -9,7 +9,9 @@ import Header from "./components/Header";
 import CreatePost from "./pages/CreatePost";
 import ProfilePage from "./pages/ProfilePage";
 import PostDetails from "./components/PostDetails";
+import SplashPage from "./pages/SplashPage";
 import './App.css'
+import EditPost from "./pages/EditPost";
 // AuthContext code suggestion provided by chatgpt along with createContext
 export const AuthContext = createContext();
 
@@ -31,18 +33,19 @@ const [auth, setAuth] = useState({ isLoggedIn: false, user: null });
             <>
               <Route path="/" element={<BlogPage />} />
               <Route path="/posts/:id" element={<PostDetails />} />
-
+              <Route path="/EditPost/:id" element={<EditPost />} />
               <Route path="/profiles/:userId" element={<ProfilePage />} />
-
-                <Route path="/CreatePost" element={<CreatePost />} />
-
+              <Route path="/CreatePost" element={<CreatePost />} />
             </>
           ) : (
             <>
+              
+              <Route path="/" element={<SplashPage />} />
               <Route path="/login/" element={<LoginPage />} />
               <Route path="/register/" element={<RegisterPage />} />
               {/* the below line makes it so any routes that don't match a component route will route to login page */}
               <Route path="*" element={<LoginPage />} />
+              
             </>
           )}
         </Routes>
