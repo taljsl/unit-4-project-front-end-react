@@ -6,6 +6,7 @@ import { AuthContext } from "../App";
 import { deletePost } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import EditPost from "../pages/EditPost";
+import { Link } from "react-router-dom";
 const PostDetails = () => {
   const { id } = useParams(); // This retrieves the post id from the URL
   const [post, setPost] = useState(null);
@@ -66,7 +67,15 @@ const PostDetails = () => {
       <div>
         <p>{post.body_text}</p>
       </div>
-      {isOwner && <button onClick={goToEditPost} type="Button"> Edit</button>}
+
+//       {isOwner && <button onClick={goToEditPost} type="Button"> Edit</button>}
+
+      {isOwner && (
+  <button type="Button" onClick={() => navigate(`/posts/edit/${id}`)}>
+    Edit
+  </button>
+)}
+
       {isOwner && <button onClick={() => handleDelete(id)}> Delete</button>}
     </div>
   );
