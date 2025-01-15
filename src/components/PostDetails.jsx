@@ -40,6 +40,12 @@ const PostDetails = () => {
   }, [post]);
 
   console.log(post);
+
+  const goToEditPost = () => {
+    preventdefault();
+    navigate('/EditPost/:id');
+  }
+ 
   if (!post) {
     return <p>Loading post details...</p>;
   }
@@ -61,11 +67,15 @@ const PostDetails = () => {
       <div>
         <p>{post.body_text}</p>
       </div>
+
+//       {isOwner && <button onClick={goToEditPost} type="Button"> Edit</button>}
+
       {isOwner && (
   <button type="Button" onClick={() => navigate(`/posts/edit/${id}`)}>
     Edit
   </button>
 )}
+
       {isOwner && <button onClick={() => handleDelete(id)}> Delete</button>}
     </div>
   );

@@ -7,14 +7,14 @@ const PostList = ({ posts }) => {
 
   return (
     <div>
-      <h2>Posts</h2>
+      {/* <h2>Your Posts Feed:</h2> */}
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
             <Link to={`/posts/${post.id}`}>{post.title}</Link>
           </li>
         ))}
-        
+
       </ul>
     </div>
   );

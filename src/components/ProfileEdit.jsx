@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import f
 
 const ProfileEdit = () => {
 
@@ -8,7 +7,7 @@ const ProfileEdit = () => {
     const [profileData, setProflieData] = useState({
         dob: '',
         bio: '',
-        profile_picture:
+        profile_picture: '',
     })
     
     const handleProfileChange = (e) => {

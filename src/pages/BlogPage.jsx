@@ -39,8 +39,9 @@ const BlogPage = () => {
   };
   return (
     <div>
+      <h2>The Explore Feed:</h2>
       <SearchBar onSearch={handleSearch} />
-      <button onClick={goToCreatePost}>Craft a Post</button>
+      {/* <button onClick={goToCreatePost}>Craft a Post</button> */}
       {selectedPost ? (
         <PostDetails post={selectedPost} />
       ) : (
